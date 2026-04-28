@@ -12,6 +12,11 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("Connected to MongoDB Cloud"))
   .catch(err => console.error("Could not connect to MongoDB", err));
 
+
+// ייבוא הראוטר שיצרנו
+const cancellationRoutes = require('./routes/cancellationRoutes');
+app.use('/api/cancellations', cancellationRoutes);
+
 // נקודת קצה (Endpoint) לבדיקה
 app.get('/api/status', (req, res) => {
   res.json({ message: "Server is running and connected to DB!" });
